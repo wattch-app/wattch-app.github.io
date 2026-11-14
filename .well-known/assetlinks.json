@@ -1,0 +1,10 @@
+[{
+  "relation": ["delegate_permission/common.handle_all_urls"],
+  "target": {
+    "namespace": "android_app",
+    "package_name": "com.ecocarga.app",
+    "sha256_cert_fingerprints": [
+      "D8:82:AA:28:5C:D4:12:D3:A0:B4:29:A6:22:D2:20:C5:0E:FD:00:29:39:20:F1:E0:40:19:06:C7:D8:0F:2E:D1"
+    ]
+  }
+}]
