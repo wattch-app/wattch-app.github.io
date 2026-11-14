@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Punto de Carga - Wattch</title>
+    <meta name="description" content="Abre y monitoriza este cargador en Wattch.">
+    <style>
+        :root {
+            --bg-color: #0b1120;
+            --card-bg: #151e32;
+            --card-border: #24324f;
+            --text-primary: #f8fafc;
+            --text-secondary: #94a3b8;
+            --accent: #10b981;
+            --accent-glow: rgba(16, 185, 129, 0.25);
+        }
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-primary);
+            line-height: 1.6;
+            padding: 24px 16px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+        .container {
+            max-width: 540px;
+            width: 100%;
+            text-align: center;
+        }
+        .icon {
+            font-size: 48px;
+            margin-bottom: 16px;
+            display: inline-block;
+        }
+        h1 {
+            font-size: 26px;
+            font-weight: 700;
+            margin-bottom: 8px;
+        }
+        p.subtitle {
+            font-size: 15px;
+            color: var(--text-secondary);
+            margin-bottom: 24px;
+        }
+        .station-box {
+            background-color: var(--card-bg);
+            border: 1px solid var(--card-border);
+            border-radius: 16px;
+            padding: 20px;
+            margin-bottom: 24px;
+            text-align: left;
+        }
+        .station-title {
+            font-size: 18px;
+            font-weight: 600;
+            color: #ffffff;
+            margin-bottom: 6px;
+        }
+        .station-address {
+            font-size: 14px;
+            color: var(--text-secondary);
+            margin-bottom: 10px;
+        }
+        .station-id {
+            font-family: monospace;
+            font-size: 12px;
+            background: rgba(0, 0, 0, 0.3);
+            padding: 4px 8px;
+            border-radius: 6px;
+            color: #6ee7b7;
+            word-break: break-all;
+            display: inline-block;
+        }
+        .btn-open {
+            display: block;
+            width: 100%;
+            background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+            color: #ffffff;
+            font-size: 16px;
+            font-weight: 700;
+            text-decoration: none;
+            padding: 14px 24px;
+            border-radius: 12px;
+            box-shadow: 0 8px 20px var(--accent-glow);
+            margin-bottom: 12px;
+        }
+        .btn-download {
+            display: block;
+            width: 100%;
+            background-color: transparent;
+            border: 1px solid var(--card-border);
+            color: var(--text-secondary);
+            font-size: 14px;
+            font-weight: 600;
+            text-decoration: none;
+            padding: 12px 24px;
+            border-radius: 12px;
+        }
+        .btn-download:hover {
+            color: #ffffff;
+            border-color: var(--text-secondary);
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="icon">⚡</div>
+        <h1>Punto de Recarga Compartido</h1>
+        <p class="subtitle">Han compartido una estación contigo a través de Wattch.</p>
+
+        <div class="station-box">
+            <div id="stationName" class="station-title">Cargador de vehículo eléctrico</div>
+            <div id="stationAddress" class="station-address">Pulsa el botón inferior para abrirlo en Wattch</div>
+            <div id="stationId" class="station-id">ID: ...</div>
+        </div>
+
+        <a id="openAppBtn" class="btn-open" href="#">⚡ Abrir y añadir en Wattch</a>
+        <a class="btn-download" href="https://play.google.com/store/apps/details?id=com.ecocarga.app" target="_blank">📲 ¿No tienes la app? Descárgala en Google Play</a>
+    </div>
+
+    <script>
+        const params = new URLSearchParams(window.location.search);
+        const id = params.get('id') || '';
+        const name = params.get('name') || 'Punto de recarga';
+        const address = params.get('address') || '';
+
+        if (name) document.getElementById('stationName').innerText = decodeURIComponent(name);
+        if (address) document.getElementById('stationAddress').innerText = decodeURIComponent(address);
+        if (id) document.getElementById('stationId').innerText = 'ID: ' + id;
+
+        // Intentar abrir mediante el esquema nativo wattch://
+        const nativeUrl = 'wattch://station' + window.location.search;
+        document.getElementById('openAppBtn').setAttribute('href', nativeUrl);
+
+        // Si el usuario llega desde el móvil directamente al cargar la web, intenta abrir la app
+        if (/android/i.test(navigator.userAgent) && id) {
+            window.location.href = nativeUrl;
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Política de Privacidad y Aviso Legal - Wattch</title>
+    <style>
+        :root {
+            --bg-color: #0f172a;
+            --card-bg: #1e293b;
+            --text-primary: #f8fafc;
+            --text-secondary: #94a3b8;
+            --accent: #10b981;
+            --accent-cyan: #06b6d4;
+            --accent-border: #334155;
+            --border-color: #334155;
+            --danger-bg: rgba(239, 68, 68, 0.1);
+            --danger-border: rgba(239, 68, 68, 0.35);
+        }
+        @media (prefers-color-scheme: light) {
+            :root {
+                --bg-color: #f8fafc;
+                --card-bg: #ffffff;
+                --text-primary: #0f172a;
+                --text-secondary: #475569;
+                --accent: #059669;
+                --accent-cyan: #0891b2;
+                --accent-border: #e2e8f0;
+                --border-color: #e2e8f0;
+                --danger-bg: rgba(239, 68, 68, 0.06);
+                --danger-border: rgba(239, 68, 68, 0.25);
+            }
+        }
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-primary);
+            line-height: 1.65;
+            padding: 24px 16px;
+        }
+        .container {
+            max-width: 840px;
+            margin: 0 auto;
+        }
+        header {
+            text-align: center;
+            margin-bottom: 36px;
+            padding-bottom: 24px;
+            border-bottom: 1px solid var(--border-color);
+        }
+        .app-badge {
+            display: inline-block;
+            background-color: var(--accent);
+            color: #ffffff;
+            font-size: 13px;
+            font-weight: 700;
+            padding: 4px 14px;
+            border-radius: 20px;
+            margin-bottom: 12px;
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
+        }
+        h1 {
+            font-size: 28px;
+            font-weight: 800;
+            margin-bottom: 8px;
+        }
+        .date {
+            font-size: 14px;
+            color: var(--text-secondary);
+        }
+        section {
+            background-color: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            padding: 22px 24px;
+            margin-bottom: 20px;
+        }
+        h2 {
+            font-size: 19px;
+            font-weight: 700;
+            color: var(--accent);
+            margin-bottom: 12px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        h3 {
+            font-size: 16px;
+            font-weight: 600;
+            color: var(--text-primary);
+            margin: 14px 0 6px 0;
+        }
+        p {
+            color: var(--text-secondary);
+            font-size: 15px;
+            margin-bottom: 12px;
+        }
+        p:last-child {
+            margin-bottom: 0;
+        }
+        ul {
+            list-style-type: none;
+            padding-left: 0;
+            margin-top: 8px;
+            margin-bottom: 12px;
+        }
+        li {
+            color: var(--text-secondary);
+            font-size: 14.5px;
+            padding: 8px 0;
+            border-bottom: 1px dashed var(--border-color);
+        }
+        li:last-child {
+            border-bottom: none;
+        }
+        li strong {
+            color: var(--text-primary);
+        }
+        .disclaimer-box {
+            background-color: rgba(245, 158, 11, 0.08);
+            border: 1px solid rgba(245, 158, 11, 0.35);
+            border-radius: 10px;
+            padding: 16px;
+            margin-top: 12px;
+        }
+        .disclaimer-box p {
+            color: var(--text-primary);
+            font-size: 14px;
+            font-weight: 500;
+        }
+        .highlight-box {
+            background-color: rgba(16, 185, 129, 0.08);
+            border: 1px solid rgba(16, 185, 129, 0.35);
+            border-radius: 10px;
+            padding: 16px;
+            margin-top: 12px;
+            margin-bottom: 12px;
+        }
+        .highlight-box p {
+            color: var(--text-primary);
+            font-size: 14px;
+        }
+        .action-link {
+            color: var(--accent-cyan);
+            text-decoration: underline;
+            font-weight: 600;
+        }
+        footer {
+            text-align: center;
+            font-size: 13px;
+            color: var(--text-secondary);
+            margin-top: 36px;
+            padding-top: 20px;
+            border-top: 1px solid var(--border-color);
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <span class="app-badge">Wattch v2.6.2</span>
+            <h1>Política de Privacidad y Aviso Legal</h1>
+            <p class="date">Última actualización: 11 de noviembre de 2026</p>
+        </header>
+
+        <section>
+            <h2>1. Compromiso de Soberanía y Privacidad de Datos</h2>
+            <p>La aplicación <strong>Wattch</strong> ha sido concebida bajo el principio de <em>privacidad por diseño</em> y arquitectura soberana orientada al cliente (<em>client-only</em>).</p>
+            <p>Wattch <strong>no posee servidores centrales propios, ni almacena perfiles en bases de datos remotas privadas</strong>. Las estaciones guardadas, las alarmas de vigilancia configuradas y las preferencias personales residen exclusivamente de manera local y cifrada (mediante respaldo cifrado <code>AES-256-GCM</code> en Android Keystore) en el almacenamiento interno aislado de su propio dispositivo Android.</p>
+        </section>
+
+        <section>
+            <h2>2. Respaldo en la Nube mediante Google Drive (AppData)</h2>
+            <p>Para mayor comodidad, Wattch ofrece una función opcional de copia de seguridad en la nube vinculada a la cuenta de Google del usuario.</p>
+            <div class="highlight-box">
+                <p><strong>Ámbito Solicitado:</strong> <code>https://www.googleapis.com/auth/drive.appdata</code> (Acceso a la carpeta oculta de datos de aplicación en Google Drive).</p>
+            </div>
+            <ul>
+                <li><strong>Finalidad Exclusiva:</strong> Guardar y restaurar el archivo de configuración <code>wattch_backup.json</code> (lista de estaciones favoritas y alias personalizados) cuando el usuario lo solicite expresamente desde la pestaña <em>Perfil</em>.</li>
+                <li><strong>Aislamiento Total de Archivos Personales:</strong> Wattch <strong>no puede ver, editar, leer ni eliminar ningún otro archivo de su Google Drive</strong>. El ámbito <code>drive.appdata</code> está estrictamente confinado a una carpeta oculta del sistema (<code>appDataFolder</code>) reservada para esta app a la que ningún otro archivo o usuario externo puede acceder.</li>
+                <li><strong>Soberanía del Usuario:</strong> La sincronización no se realiza a servidores de Wattch ni de terceros, sino directamente desde el dispositivo del usuario a su propio almacenamiento personal en Google Drive mediante peticiones HTTPS seguras.</li>
+            </ul>
+        </section>
+
+        <section>
+            <h2>3. Servicios de Terceros, Consultas de Red y Pagos</h2>
+            <p>Para las consultas de disponibilidad, suscripción, autenticación y publicidad en el plan gratuito, la aplicación interactúa únicamente con los siguientes servicios:</p>
+            <ul>
+                <li><strong>Consultas de Disponibilidad y Logotipos (HTTPS):</strong> Las consultas de estado se realizan directamente desde el dispositivo mediante HTTPS solo para las estaciones en sincronización activa (las estaciones en reserva permanecen estáticas sin tráfico de red). La obtención de logotipos identificativos de operadores aplica validación estricta HTTPS, protección anti-SSRF y almacenamiento en caché local.</li>
+                <li><strong>Google Play Billing (Suscripciones PRO):</strong> Todas las compras y suscripciones recurrentes (como el plan <code>wattch_pro_monthly</code>) se gestionan íntegramente a través de la infraestructura oficial de Google Play. Wattch nunca tiene acceso ni almacena números de tarjeta, cuentas bancarias ni información de facturación. Los importes aplicables se muestran directamente en la pasarela de Google Play según la región del usuario, quien puede gestionar o cancelar su suscripción en cualquier momento desde <a href="https://play.google.com/store/account/subscriptions" target="_blank" class="action-link">Google Play Subscriptions</a>.</li>
+                <li><strong>Google Sign-In:</strong> Permite obtener de forma segura un token de autorización OAuth en el dispositivo para comunicar con la API de Google Drive AppData. Wattch únicamente almacena de forma local el nombre, correo y avatar del usuario (descargado exclusivamente desde dominios oficiales de Google por HTTPS) para mostrar el estado de vinculación en la pestaña <em>Perfil</em>.</li>
+                <li><strong>Google AdMob:</strong> En el Plan Gratuito, el mantenimiento de la aplicación se financia mediante formatos publicitarios no intrusivos (banner inferior, anuncio nativo en la lista y anuncios bonificados voluntarios con consentimiento previo para armar alertas o activar cargadores en reserva durante 6 horas). Google AdMob puede procesar el Identificador de Publicidad (<code>AD_ID</code>) conforme a sus políticas de privacidad. En el Plan PRO, todos los anuncios se desactivan por completo.</li>
+            </ul>
+        </section>
+
+        <section>
+            <h2>4. Permisos del Dispositivo y Justificación Técnica</h2>
+            <p>Wattch solicita únicamente los permisos mínimos requeridos para sus funciones operativas:</p>
+            <ul>
+                <li><strong>FOREGROUND_SERVICE y FOREGROUND_SERVICE_SPECIAL_USE:</strong> Requeridos exclusivamente cuando el usuario arma una alerta sobre una estación o conector ocupado, para comprobar periódicamente su estado y emitir un aviso inmediato en cuanto quede libre. El servicio se detiene automáticamente al liberarse la toma o al desactivar las alertas.</li>
+                <li><strong>POST_NOTIFICATIONS y VIBRATE:</strong> Empleados exclusivamente para emitir alertas locales audibles y con vibración cuando se libera un conector vigilado.</li>
+                <li><strong>INTERNET y ACCESS_NETWORK_STATE:</strong> Para consultar la API pública de puntos de recarga (mapareve.es), validar suscripciones en Google Play y sincronizar la carpeta privada de Google Drive.</li>
+                <li><strong>ACCESS_FINE_LOCATION y ACCESS_COARSE_LOCATION (Opcional):</strong> Utilizados exclusivamente bajo demanda del usuario en la pestaña <em>Mapa</em> para centrar el visor en su posición actual. La ubicación nunca se registra en segundo plano ni se envía a servidores propios.</li>
+                <li><strong>WAKE_LOCK y REQUEST_IGNORE_BATTERY_OPTIMIZATIONS (Opcional):</strong> Permiten mantener estable el ciclo de vigilancia cuando el usuario tiene una alerta activa con la pantalla apagada.</li>
+                <li><strong>Escaneo de Códigos QR (Google Code Scanner / Cámara bajo demanda):</strong> Utilizado únicamente cuando el usuario pulsa "Escanear Código QR con Cámara" en Ajustes para importar su lista de estaciones desde otro teléfono.</li>
+            </ul>
+        </section>
+
+        <section id="eliminacion-datos">
+            <h2>5. Política de Eliminación de Cuentas y Datos</h2>
+            <p>En cumplimiento con las políticas de Google Play, usted tiene el control total para eliminar sus datos en cualquier momento:</p>
+            <ul>
+                <li><strong>Eliminación local de estaciones y alertas:</strong> En la pestaña <em>Cargadores</em>, deslice cualquier tarjeta hacia la izquierda para eliminarla individualmente, utilice la herramienta de <strong>Borrado masivo</strong> desde el botón de acciones (+) para eliminar varias estaciones a la vez, o pulse "Eliminar todas" en la pestaña <em>Vigilancia</em> para borrar todas las alertas activas. Asimismo, al borrar los datos de la aplicación desde los Ajustes de Android o desinstalar Wattch, se elimina de inmediato todo el almacenamiento local del dispositivo.</li>
+                <li><strong>Desvinculación y eliminación de cuenta local:</strong> En la pestaña <em>Perfil</em>, puede presionar el botón <strong>"Desvincular cuenta"</strong>, lo cual borra inmediatamente el perfil local y revoca la sesión de Google en la app.</li>
+                <li><strong>Eliminación de la copia en la nube (Google Drive):</strong> Puede revocar el acceso y eliminar los datos ocultos de la aplicación en cualquier momento visitando <a href="https://myaccount.google.com/permissions" target="_blank" class="action-link">Permisos de la Cuenta de Google</a> y seleccionando Wattch &gt; Eliminar acceso, o desde Configuración &gt; Administrar aplicaciones en Google Drive web.</li>
+                <li><strong>Solicitud asistida:</strong> Consulte nuestra página dedicada de <a href="data-deletion.html" class="action-link">Solicitud de Eliminación de Datos</a> para conocer el procedimiento paso a paso.</li>
+            </ul>
+        </section>
+
+        <section>
+            <h2>6. Aviso Legal y Descargo de Responsabilidad</h2>
+            <div class="disclaimer-box">
+                <p><strong>Descargo y Fuentes de Información:</strong> Wattch es una herramienta independiente desarrollada para la consulta ciudadana de puntos de recarga de vehículos eléctricos. <strong>Wattch no tiene afiliación, patrocinio, vínculo societario ni relación oficial con Iberdrola, Repsol, Endesa, Zunder, TotalEnergies, Ionity, mapareve.es ni ningún otro operador energético</strong>. Los nombres comerciales y logotipos mostrados pertenecen a sus respectivos propietarios y se emplean exclusivamente con fines identificativos.</p>
+                <p>La información cartográfica y el censo oficial de puntos de recarga se basan en los datos abiertos del <strong>Registro Estatal de Puntos de Recarga (REVE)</strong> del Ministerio para la Transición Ecológica y el Reto Demográfico (MITECO), reutilizados conforme a la <em>Ley 37/2007 sobre reutilización de la información del sector público</em> y la <em>Directiva Europea (UE) 2019/1024</em> de Datos Abiertos. La información tiene carácter orientativo y de consulta pública.</p>
+            </div>
+        </section>
+
+        <section>
+            <h2>7. Contacto y Soporte</h2>
+            <p>Para preguntas, sugerencias o consultas sobre privacidad y seguridad de datos, puede ponerse en contacto directamente a través de nuestro correo oficial de asistencia:</p>
+            <p style="margin-top: 12px;"><a href="mailto:appwattch@gmail.com" style="color: var(--accent); font-weight: 600; text-decoration: underline;">appwattch@gmail.com</a></p>
+        </section>
+
+        <footer>
+            <p>&copy; 2026 Wattch. Todos los derechos reservados.</p>
+        </footer>
+    </div>
+</body>
+</html>
