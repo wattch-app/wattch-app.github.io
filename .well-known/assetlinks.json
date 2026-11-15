@@ -1,10 +1,18 @@
-[{
-  "relation": ["delegate_permission/common.handle_all_urls"],
-  "target": {
-    "namespace": "android_app",
-    "package_name": "com.ecocarga.app",
-    "sha256_cert_fingerprints": [
-      "D8:82:AA:28:5C:D4:12:D3:A0:B4:29:A6:22:D2:20:C5:0E:FD:00:29:39:20:F1:E0:40:19:06:C7:D8:0F:2E:D1"
-    ]
+[
+  {
+    "relation": [
+      "delegate_permission/common.handle_all_urls",
+      "delegate_permission/common.get_login_creds"
+    ],
+    "target": {
+      "namespace": "android_app",
+      "package_name": "com.ecocarga.app",
+      "sha256_cert_fingerprints": [
+        "D8:82:AA:28:5C:D4:12:D3:A0:B4:29:A6:22:D2:20:C5:0E:FD:00:29:39:20:F1:E0:40:19:06:C7:D8:0F:2E:D1",
+        "75:77:3F:ED:83:24:8C:56:DD:D4:4B:8B:0F:1C:3D:DE:FA:09:FF:5E:54:F4:03:BA:70:E1:36:E6:78:F9:68:7B",
+        "02:05:E9:5F:9D:22:B5:1C:0A:36:C4:DD:3B:AD:EC:74:A4:02:FC:AB:CB:47:34:D4:CE:80:31:D9:6E:F1:23:EB",
+        "4D:B4:D8:B4:B1:9F:19:D4:91:02:69:62:F4:CF:7A:5B:E6:21:A1:CB:11:DF:89:BB:7F:2E:6A:64:FE:C1:03:F9"
+      ]
+    }
   }
-}]
+]
