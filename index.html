@@ -3,187 +3,494 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Wattch - Monitor Inteligente de Cargadores de Vehículos Eléctricos</title>
-    <meta name="description" content="Monitoriza en tiempo real la disponibilidad de cargadores de vehículos eléctricos en España con Wattch. Notificaciones instantáneas y máxima privacidad.">
+    <title>Wattch — Monitor de puntos de recarga en tiempo real</title>
+    <meta name="description" content="Wattch monitoriza la disponibilidad de tomas de recarga pública de vehículos eléctricos en España. Sin registro, almacenamiento local seguro y notificaciones directas.">
+    <link rel="icon" type="image/png" href="logo.png">
+    
     <style>
         :root {
-            --bg-color: #0b1120;
-            --card-bg: #151e32;
-            --card-border: #24324f;
-            --text-primary: #f8fafc;
-            --text-secondary: #94a3b8;
-            --accent: #10b981;
-            --accent-glow: rgba(16, 185, 129, 0.25);
-            --cyan: #06b6d4;
+            --bg-color: #0b0f19;
+            --surface-color: #111827;
+            --surface-card: #161f30;
+            --border-color: #243047;
+            --text-primary: #f9fafb;
+            --text-secondary: #9ca3af;
+            --text-muted: #6b7280;
+            --accent-green: #10b981;
+            --accent-green-hover: #059669;
         }
-        * { box-sizing: border-box; margin: 0; padding: 0; }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
         body {
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
             background-color: var(--bg-color);
             color: var(--text-primary);
-            line-height: 1.6;
-            padding: 32px 16px;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            min-height: 100vh;
+            line-height: 1.5;
+            -webkit-font-smoothing: antialiased;
         }
+
         .container {
-            max-width: 680px;
-            width: 100%;
-            text-align: center;
+            max-width: 1040px;
+            margin: 0 auto;
+            padding: 0 24px;
         }
-        .logo-badge {
-            width: 88px;
-            height: 88px;
-            background: linear-gradient(135deg, #10b981 0%, #06b6d4 100%);
-            border-radius: 24px;
-            display: inline-flex;
+
+        /* Navegación */
+        header {
+            border-bottom: 1px solid var(--border-color);
+            background-color: var(--bg-color);
+        }
+
+        nav {
+            display: flex;
             align-items: center;
-            justify-content: center;
-            font-size: 42px;
-            box-shadow: 0 10px 30px var(--accent-glow);
-            margin-bottom: 24px;
+            justify-content: space-between;
+            height: 72px;
         }
-        h1 {
-            font-size: 38px;
-            font-weight: 800;
-            letter-spacing: -0.03em;
-            margin-bottom: 12px;
-            background: linear-gradient(120deg, #ffffff 40%, #a7f3d0 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
+
+        .brand-link {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            text-decoration: none;
+            color: var(--text-primary);
         }
-        p.subtitle {
-            font-size: 18px;
+
+        .brand-link img {
+            width: 36px;
+            height: 36px;
+            border-radius: 8px;
+        }
+
+        .brand-link span {
+            font-size: 20px;
+            font-weight: 700;
+            letter-spacing: -0.02em;
+        }
+
+        .nav-links {
+            display: flex;
+            align-items: center;
+            gap: 24px;
+        }
+
+        .nav-links a {
             color: var(--text-secondary);
-            margin-bottom: 32px;
-            max-width: 520px;
-            margin-left: auto;
-            margin-right: auto;
+            text-decoration: none;
+            font-size: 14px;
+            font-weight: 500;
+            transition: color 0.15s ease;
         }
-        .card {
-            background-color: var(--card-bg);
-            border: 1px solid var(--card-border);
-            border-radius: 20px;
-            padding: 28px 24px;
-            margin-bottom: 32px;
-            text-align: left;
+
+        .nav-links a:hover {
+            color: var(--text-primary);
         }
-        .features {
+
+        /* Hero */
+        .hero {
             display: grid;
             grid-template-columns: 1fr;
-            gap: 16px;
+            gap: 48px;
+            align-items: center;
+            padding: 64px 0;
         }
-        @media (min-width: 600px) {
-            .features { grid-template-columns: 1fr 1fr; }
+
+        @media (min-width: 860px) {
+            .hero {
+                grid-template-columns: 1.15fr 0.85fr;
+                padding: 80px 0;
+            }
         }
-        .feature-item {
-            display: flex;
-            align-items: flex-start;
-            gap: 12px;
-        }
-        .feature-icon {
-            font-size: 20px;
-            line-height: 1;
-            margin-top: 2px;
-        }
-        .feature-item h3 {
-            font-size: 15px;
-            color: #ffffff;
-            font-weight: 600;
-            margin-bottom: 2px;
-        }
-        .feature-item p {
+
+        .hero-tag {
+            display: inline-block;
+            color: var(--accent-green);
             font-size: 13px;
-            color: var(--text-secondary);
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            margin-bottom: 16px;
         }
-        .cta-btn {
+
+        .hero-title {
+            font-size: 38px;
+            line-height: 1.15;
+            font-weight: 800;
+            letter-spacing: -0.03em;
+            color: #ffffff;
+            margin-bottom: 20px;
+        }
+
+        @media (min-width: 600px) {
+            .hero-title {
+                font-size: 48px;
+            }
+        }
+
+        .hero-desc {
+            font-size: 17px;
+            color: var(--text-secondary);
+            line-height: 1.6;
+            margin-bottom: 32px;
+            max-width: 520px;
+        }
+
+        .cta-row {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            margin-bottom: 40px;
+        }
+
+        .btn-primary {
             display: inline-flex;
             align-items: center;
-            justify-content: center;
-            gap: 12px;
-            background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+            gap: 10px;
+            background-color: var(--accent-green);
             color: #ffffff;
-            font-size: 17px;
-            font-weight: 700;
+            padding: 13px 24px;
+            border-radius: 8px;
             text-decoration: none;
-            padding: 16px 36px;
-            border-radius: 9999px;
-            box-shadow: 0 10px 25px var(--accent-glow);
-            transition: transform 0.2s, box-shadow 0.2s;
+            font-weight: 600;
+            font-size: 15px;
+            transition: background-color 0.15s ease;
         }
-        .cta-btn:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 14px 30px rgba(16, 185, 129, 0.4);
+
+        .btn-primary:hover {
+            background-color: var(--accent-green-hover);
         }
-        .footer-links {
-            margin-top: 40px;
+
+        .btn-primary svg {
+            width: 18px;
+            height: 18px;
+            fill: currentColor;
+        }
+
+        .hero-specs {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 16px;
+            padding-top: 24px;
+            border-top: 1px solid var(--border-color);
+        }
+
+        .spec-item .spec-label {
+            font-size: 12px;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            letter-spacing: 0.04em;
+            margin-bottom: 4px;
+        }
+
+        .spec-item .spec-val {
+            font-size: 15px;
+            font-weight: 600;
+            color: var(--text-primary);
+        }
+
+        /* Mockup del teléfono */
+        .device-wrapper {
             display: flex;
             justify-content: center;
-            gap: 20px;
-            font-size: 13px;
         }
+
+        .phone-mockup {
+            max-width: 310px;
+            width: 100%;
+            border-radius: 28px;
+            border: 1px solid var(--border-color);
+            background-color: var(--surface-color);
+            overflow: hidden;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+        }
+
+        .phone-mockup img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        /* Sección de Características */
+        .features-section {
+            padding: 72px 0;
+            border-top: 1px solid var(--border-color);
+        }
+
+        .section-title-wrap {
+            margin-bottom: 40px;
+        }
+
+        .section-title-wrap h2 {
+            font-size: 28px;
+            font-weight: 700;
+            letter-spacing: -0.02em;
+            margin-bottom: 8px;
+        }
+
+        .section-title-wrap p {
+            color: var(--text-secondary);
+            font-size: 15px;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 20px;
+        }
+
+        @media (min-width: 768px) {
+            .features-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+        }
+
+        .feature-box {
+            background-color: var(--surface-card);
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            padding: 24px;
+        }
+
+        .feature-icon {
+            width: 40px;
+            height: 40px;
+            border-radius: 8px;
+            background-color: var(--surface-color);
+            border: 1px solid var(--border-color);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--accent-green);
+            margin-bottom: 20px;
+        }
+
+        .feature-icon svg {
+            width: 20px;
+            height: 20px;
+            fill: currentColor;
+        }
+
+        .feature-box h3 {
+            font-size: 16px;
+            font-weight: 600;
+            margin-bottom: 8px;
+            color: #ffffff;
+        }
+
+        .feature-box p {
+            font-size: 14px;
+            color: var(--text-secondary);
+            line-height: 1.55;
+        }
+
+        /* Banner de información REVE */
+        .info-panel {
+            background-color: var(--surface-color);
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            padding: 28px;
+            margin-bottom: 72px;
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+        }
+
+        @media (min-width: 768px) {
+            .info-panel {
+                flex-direction: row;
+                align-items: center;
+                justify-content: space-between;
+            }
+        }
+
+        .info-panel h3 {
+            font-size: 17px;
+            font-weight: 600;
+            margin-bottom: 4px;
+        }
+
+        .info-panel p {
+            font-size: 14px;
+            color: var(--text-secondary);
+            max-width: 620px;
+        }
+
+        .info-panel a {
+            color: var(--accent-green);
+            text-decoration: none;
+            font-size: 14px;
+            font-weight: 600;
+            white-space: nowrap;
+        }
+
+        .info-panel a:hover {
+            text-decoration: underline;
+        }
+
+        /* Footer */
+        footer {
+            border-top: 1px solid var(--border-color);
+            padding: 32px 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 16px;
+            font-size: 13px;
+            color: var(--text-muted);
+        }
+
+        @media (min-width: 640px) {
+            footer {
+                flex-direction: row;
+                justify-content: space-between;
+            }
+        }
+
+        .footer-links {
+            display: flex;
+            gap: 20px;
+        }
+
         .footer-links a {
             color: var(--text-secondary);
             text-decoration: none;
-            transition: color 0.2s;
+            transition: color 0.15s;
         }
+
         .footer-links a:hover {
-            color: var(--accent);
+            color: var(--text-primary);
         }
     </style>
 </head>
 <body>
-    <div class="container">
-        <div class="logo-badge">⚡</div>
-        <h1>Wattch</h1>
-        <p class="subtitle">Monitoriza en tiempo real la disponibilidad de cargadores de vehículos eléctricos sin esperas ni sorpresas.</p>
-        
-        <div class="card">
-            <div class="features">
-                <div class="feature-item">
-                    <span class="feature-icon">🔔</span>
-                    <div>
-                        <h3>Avisos instantáneos</h3>
-                        <p>Recibe una notificación tan pronto como un conector compatible quede libre.</p>
-                    </div>
+    <header>
+        <div class="container">
+            <nav>
+                <a href="index.html" class="brand-link">
+                    <img src="logo.png" alt="Wattch Logo">
+                    <span>Wattch</span>
+                </a>
+                <div class="nav-links">
+                    <a href="privacy.html">Privacidad</a>
+                    <a href="data-deletion.html">Eliminación de Datos</a>
+                    <a href="mailto:appwattch@gmail.com">Soporte</a>
                 </div>
-                <div class="feature-item">
-                    <span class="feature-icon">🛡️</span>
-                    <div>
-                        <h3>100% Privado</h3>
-                        <p>Sin servidores intermedios de rastreo: tus datos se guardan sólo en tu teléfono.</p>
-                    </div>
+            </nav>
+        </div>
+    </header>
+
+    <main class="container">
+        <!-- Hero Section -->
+        <section class="hero">
+            <div class="hero-content">
+                <span class="hero-tag">Monitorización de recarga</span>
+                <h1 class="hero-title">
+                    Disponibilidad de cargadores de vehículos eléctricos en tiempo real
+                </h1>
+                <p class="hero-desc">
+                    Wattch consulta directamente el estado de los conectores en tus estaciones de recarga habituales. Configura alertas por conector específico y recibe avisos inmediatos en cuanto queden libres.
+                </p>
+
+                <div class="cta-row">
+                    <a class="btn-primary" href="https://play.google.com/store/apps/details?id=com.ecocarga.app" target="_blank">
+                        <!-- Icono SVG de Google Play -->
+                        <svg viewBox="0 0 24 24">
+                            <path d="M3.609 1.814L13.793 12 3.61 22.186a2.213 2.213 0 0 1-.22-.973V2.787c0-.361.08-.7.22-.973zm11.3 11.3l2.673-2.673-12.21-7.01 9.537 9.683zm0 1.772l-9.537 9.683 12.21-7.01-2.673-2.673zm1.258-1.258l3.189 1.831c.905.52.905 1.368 0 1.888l-3.189 1.831-2.585-2.585 2.585-2.965z"/>
+                        </svg>
+                        <span>Descargar en Google Play</span>
+                    </a>
                 </div>
-                <div class="feature-item">
-                    <span class="feature-icon">🗺️</span>
-                    <div>
-                        <h3>Mapa interactivo</h3>
-                        <p>Datos oficiales de miles de estaciones en España integradas directamente.</p>
+
+                <div class="hero-specs">
+                    <div class="spec-item">
+                        <div class="spec-label">Acceso</div>
+                        <div class="spec-val">Sin registro</div>
                     </div>
-                </div>
-                <div class="feature-item">
-                    <span class="feature-icon">⚡</span>
-                    <div>
-                        <h3>Soberanía local</h3>
-                        <p>Exporta o importa tus estaciones con enlaces rápidos y copias de seguridad.</p>
+                    <div class="spec-item">
+                        <div class="spec-label">Censo oficial</div>
+                        <div class="spec-val">Red REVE MITECO</div>
+                    </div>
+                    <div class="spec-item">
+                        <div class="spec-label">Almacenamiento</div>
+                        <div class="spec-val">100% Local</div>
                     </div>
                 </div>
             </div>
-        </div>
 
-        <a class="cta-btn" href="https://play.google.com/store/apps/details?id=com.ecocarga.app" target="_blank">
-            <span>📱 Descargar en Google Play</span>
-        </a>
+            <div class="device-wrapper">
+                <div class="phone-mockup">
+                    <img src="preview_app.png" alt="Interfaz de Wattch en Android">
+                </div>
+            </div>
+        </section>
 
-        <div class="footer-links">
-            <a href="privacy.html">Política de Privacidad</a>
-            <span>•</span>
-            <a href="data-deletion.html">Eliminación de Datos</a>
-            <span>•</span>
-            <a href="mailto:appwattch@gmail.com">Contacto</a>
+        <!-- Bloque de Características -->
+        <section class="features-section">
+            <div class="section-title-wrap">
+                <h2>Funcionalidad diseñada para carretera</h2>
+                <p>Herramientas directas sin sobrecarga de datos ni consumo innecesario de batería.</p>
+            </div>
+
+            <div class="features-grid">
+                <div class="feature-box">
+                    <div class="feature-icon">
+                        <!-- Icono Alerta / Campana SVG -->
+                        <svg viewBox="0 0 24 24">
+                            <path d="M12 22c1.1 0 2-.9 2-2h-4c0 1.1.9 2 2 2zm6-6v-5c0-3.07-1.63-5.64-4.5-6.32V4c0-.83-.67-1.5-1.5-1.5s-1.5.67-1.5 1.5v.68C7.64 5.36 6 7.92 6 11v5l-2 2v1h16v-1l-2-2zm-2 1H8v-6c0-2.48 1.51-4.5 4-4.5s4 2.02 4 4.5v6z"/>
+                        </svg>
+                    </div>
+                    <h3>Alertas por conector</h3>
+                    <p>Supervisa tomas específicas (CCS2, CHAdeMO o Mennekes). La aplicación emite una notificación acústica cuando el conector queda disponible.</p>
+                </div>
+
+                <div class="feature-box">
+                    <div class="feature-icon">
+                        <!-- Icono Escudo / Privacidad SVG -->
+                        <svg viewBox="0 0 24 24">
+                            <path d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4zm0 10.99h7c-.53 4.12-3.28 7.79-7 8.94V12H5V6.3l7-3.11v8.8z"/>
+                        </svg>
+                    </div>
+                    <h3>Privacidad en el dispositivo</h3>
+                    <p>Wattch no opera servidores intermedios de perfilado ni telemetría de usuario. Los datos de tus estaciones se conservan en la memoria interna protegida.</p>
+                </div>
+
+                <div class="feature-box">
+                    <div class="feature-icon">
+                        <!-- Icono Compartir / Enlace SVG -->
+                        <svg viewBox="0 0 24 24">
+                            <path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7s-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81 1.66 0 3-1.34 3-3s-1.34-3-3-3-3 1.34-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9c-1.66 0-3 1.34-3 3s1.34 3 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.16c-.05.21-.08.43-.08.65 0 1.61 1.31 2.92 2.92 2.92 1.61 0 2.92-1.31 2.92-2.92s-1.31-2.92-2.92-2.92z"/>
+                        </svg>
+                    </div>
+                    <h3>Compartición de puntos</h3>
+                    <p>Comparte enlaces directos a estaciones individuales o transfiere listas completas de puntos para añadirlos con selección interactiva.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Información del censo oficial -->
+        <div class="info-panel">
+            <div>
+                <h3>Registro Estatal de Puntos de Recarga (REVE)</h3>
+                <p>Los datos geográficos y censales de estaciones se obtienen mediante los recursos abiertos del Ministerio para la Transición Ecológica y el Reto Demográfico.</p>
+            </div>
+            <a href="privacy.html">Ver política y aviso legal &rarr;</a>
         </div>
-    </div>
+    </main>
+
+    <footer>
+        <div class="container" style="display: flex; flex-direction: inherit; justify-content: inherit; width: 100%; align-items: inherit;">
+            <div>&copy; 2026 Wattch. Todos los derechos reservados.</div>
+            <div class="footer-nav">
+                <a href="privacy.html">Política de Privacidad</a>
+                <a href="data-deletion.html">Eliminación de Datos</a>
+                <a href="mailto:appwattch@gmail.com">Contacto</a>
+            </div>
+        </div>
+    </footer>
 </body>
 </html>
