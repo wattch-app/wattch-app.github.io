@@ -164,9 +164,9 @@
 <body>
     <div class="container">
         <header>
-            <span class="app-badge">Wattch v2.6.4</span>
+            <span class="app-badge">Wattch v2.6.5</span>
             <h1>Política de Privacidad y Aviso Legal</h1>
-            <p class="date">Última actualización: 15 de noviembre de 2026</p>
+            <p class="date">Última actualización: 17 de noviembre de 2026</p>
         </header>
 
         <section>
@@ -189,13 +189,12 @@
         </section>
 
         <section>
-            <h2>3. Servicios de Terceros, Consultas de Red y Pagos</h2>
-            <p>Para las consultas de disponibilidad, suscripción, autenticación y publicidad en el plan gratuito, la aplicación interactúa únicamente con los siguientes servicios:</p>
+            <h2>3. Servicios de Terceros y Consultas de Red</h2>
+            <p>Para las consultas puntuales de disponibilidad, copia de seguridad opcional y publicidad de mantenimiento, la aplicación interactúa únicamente con los siguientes servicios:</p>
             <ul>
-                <li><strong>Consultas de Disponibilidad y Logotipos (HTTPS):</strong> Las consultas de estado se realizan directamente desde el dispositivo mediante HTTPS solo para las estaciones en sincronización activa (las estaciones en reserva permanecen estáticas sin tráfico de red). La obtención de logotipos identificativos de operadores aplica validación estricta HTTPS, protección anti-SSRF y almacenamiento en caché local.</li>
-                <li><strong>Google Play Billing (Suscripciones PRO):</strong> Todas las compras y suscripciones recurrentes (como el plan <code>wattch_pro_monthly</code>) se gestionan íntegramente a través de la infraestructura oficial de Google Play. Wattch nunca tiene acceso ni almacena números de tarjeta, cuentas bancarias ni información de facturación. Los importes aplicables se muestran directamente en la pasarela de Google Play según la región del usuario, quien puede gestionar o cancelar su suscripción en cualquier momento desde <a href="https://play.google.com/store/account/subscriptions" target="_blank" class="action-link">Google Play Subscriptions</a>.</li>
+                <li><strong>Consultas de Disponibilidad bajo Demanda y Logotipos (HTTPS):</strong> Wattch actúa exclusivamente como un agente de usuario local en el teléfono del usuario, realizando lecturas puntuales en caché temporal condicional (<code>ETag</code> / <code>If-None-Match</code>) únicamente para las fichas individuales que el usuario ha elegido vigilar (las estaciones en reserva permanecen inactivas sin tráfico de red). No existe extracción ni almacenamiento de bases de datos. En estricto cumplimiento de la Cláusula 5.1.IV del Aviso Legal de Red Eléctrica, Wattch bloquea y jamás descarga ni muestra logotipos ni signos distintivos de Red Eléctrica de España, S.A.U. ni de Mapa REVE.</li>
                 <li><strong>Google Sign-In:</strong> Permite obtener de forma segura un token de autorización OAuth en el dispositivo para comunicar con la API de Google Drive AppData. Wattch únicamente almacena de forma local el nombre, correo y avatar del usuario (descargado exclusivamente desde dominios oficiales de Google por HTTPS) para mostrar el estado de vinculación en la pestaña <em>Perfil</em>.</li>
-                <li><strong>Google AdMob:</strong> En el Plan Gratuito, el mantenimiento de la aplicación se financia mediante formatos publicitarios no intrusivos (banner inferior, anuncio nativo en la lista y anuncios bonificados voluntarios con consentimiento previo para armar alertas o activar cargadores en reserva durante 6 horas). Google AdMob puede procesar el Identificador de Publicidad (<code>AD_ID</code>) conforme a sus políticas de privacidad. En el Plan PRO, todos los anuncios se desactivan por completo.</li>
+                <li><strong>Google AdMob:</strong> El soporte técnico de la aplicación puede financiarse mediante formatos publicitarios (banner inferior, anuncio nativo en la lista y anuncios bonificados voluntarios con consentimiento previo). Google AdMob puede procesar el Identificador de Publicidad (<code>AD_ID</code>) conforme a sus políticas de privacidad.</li>
             </ul>
         </section>
 
@@ -224,10 +223,18 @@
         </section>
 
         <section>
-            <h2>6. Aviso Legal y Descargo de Responsabilidad</h2>
+            <h2>6. Aviso Legal, Atribución Oficial de Fuente y Descargo de Responsabilidad</h2>
             <div class="disclaimer-box">
-                <p><strong>Descargo y Fuentes de Información:</strong> Wattch es una herramienta independiente desarrollada para la consulta ciudadana de puntos de recarga de vehículos eléctricos. <strong>Wattch no tiene afiliación, patrocinio, vínculo societario ni relación oficial con Iberdrola, Repsol, Endesa, Zunder, TotalEnergies, Ionity, mapareve.es ni ningún otro operador energético</strong>. Los nombres comerciales y logotipos mostrados pertenecen a sus respectivos propietarios y se emplean exclusivamente con fines identificativos.</p>
-                <p>La información cartográfica y el censo oficial de puntos de recarga se basan en los datos abiertos del <strong>Registro Estatal de Puntos de Recarga (REVE)</strong> del Ministerio para la Transición Ecológica y el Reto Demográfico (MITECO), reutilizados conforme a la <em>Ley 37/2007 sobre reutilización de la información del sector público</em> y la <em>Directiva Europea (UE) 2019/1024</em> de Datos Abiertos. La información tiene carácter orientativo y de consulta pública.</p>
+                <p><strong>1. Independencia y No Afiliación Oficial:</strong> Wattch es una herramienta técnica independiente de consulta local en el dispositivo del usuario. <strong>Wattch no tiene afiliación, patrocinio, vínculo societario ni relación oficial con RED ELÉCTRICA DE ESPAÑA, S.A.U. (Redeia), el Ministerio para la Transición Ecológica y el Reto Demográfico (MITECO), mapareve.es, Iberdrola, Repsol, Endesa, Zunder, TotalEnergies, Ionity ni ningún otro operador de puntos de recarga (CPO)</strong>.</p>
+                <p><strong>2. Cumplimiento de la Cláusula 5.1 del Aviso Legal de Red Eléctrica y Ley 37/2007 (RISP):</strong> En cumplimiento expreso de las condiciones de uso y reutilización de la información pública:</p>
+                <ul>
+                    <li><strong>I. Mención explícita de la fuente:</strong> La fuente de la información pública de los puntos de recarga consultados por el usuario es <strong>RED ELÉCTRICA DE ESPAÑA, S.A.U.</strong> (Punto de Acceso Nacional de información de puntos de recarga <strong>Mapa REVE</strong> — <code>www.mapareve.es</code> / MITECO).</li>
+                    <li><strong>II. No alteración ni desnaturalización:</strong> Los datos originales de estado operativo, potencia eléctrica y tarifas publicados en la ficha pública de cada estación se muestran íntegros al usuario sin alterar ni desnaturalizar su sentido.</li>
+                    <li><strong>III. Fecha y hora de última actualización:</strong> La aplicación muestra de forma permanente y visible tanto en la cabecera general como en cada conector la fecha y hora exacta de la última actualización reportada por la fuente.</li>
+                    <li><strong>IV. Prohibición de uso de logotipos y signos distintivos:</strong> Wattch no utiliza ni reproduce en ningún caso logotipos, marcas gráficas ni la apariencia visual (<em>look and feel</em>) de Red Eléctrica de España, S.A.U. ni de Mapa REVE, bloqueando por código cualquier descarga de imágenes procedentes de sus dominios institucionales.</li>
+                </ul>
+                <p><strong>3. Naturaleza Técnica de Copia Privada Temporal (Arts. 31.1 y 133-135 TRLPI):</strong> Wattch no realiza extracción masiva, indexación ni redistribución de bases de datos en servidores externos. La aplicación funciona exclusivamente en el terminal del usuario realizando una copia privada temporal en memoria/caché local de las fichas públicas individuales que el propio usuario consulta expresamente.</p>
+                <p><strong>4. Textos Legales Oficiales de la Fuente:</strong> El usuario puede consultar en todo momento las condiciones del titular de la fuente en <a href="https://www.ree.es/es/aviso-legal" target="_blank" class="action-link">Aviso Legal de Red Eléctrica</a>, <a href="https://www.mapareve.es/politica-de-privacidad" target="_blank" class="action-link">Política de Privacidad de Mapa REVE</a> y <a href="https://www.mapareve.es/politica-cookies" target="_blank" class="action-link">Política de Cookies de Mapa REVE</a>.</p>
             </div>
         </section>
 
